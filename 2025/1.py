@@ -17,3 +17,21 @@ for line in data.split():
 print(count)
 
 # part 2
+position = 50
+count = 0
+
+for line in data.split():
+    direction = line[0]
+    distance = int(line[1:len(line)])
+    if direction == 'R':
+        if (position + distance) >= 100:
+            count = count + int((position + distance) / 100)
+        position = (position + distance) % 100
+    if direction == 'L':
+        if (position - distance) <= 0:
+            count = count - int((position - distance) / 100)
+            if (position != 0):
+                count = count + 1
+        position = (position - distance) % 100
+
+print(count)
